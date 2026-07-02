@@ -35,7 +35,7 @@ namespace leedayeon2566038{
             if(hour<10){
                 std::cout<<"0";
             }
-            std::cout<<hour<<":"
+            std::cout<<hour<<":";
             if(minute<10){
                 std::cout<<"0";
             }
@@ -48,8 +48,8 @@ namespace leedayeon2566038{
         void setMinute(int m){
             minute=m; testMinute();
         }
-        int getHour() const {return hour};
-        int getMinute() const{return minute};
+        int getHour() const {return hour;}
+        int getMinute() const{return minute;}
 
     };
 }

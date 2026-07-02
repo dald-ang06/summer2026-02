@@ -21,7 +21,7 @@ namespace leedayeon2566038{
         void print(){
             wakeTime.print();
             
-            std::cout<<" alarm is"<<((inActive)?"on":"off")<<"\n";
+            std::cout<<" alarm is "<<((inActive)?"on":"off")<<"\n";
         }
         timeOfDay& getWakeTime(){return wakeTime;}
         void setWakeTime(const timeOfDay& t){wakeTime=t;}
