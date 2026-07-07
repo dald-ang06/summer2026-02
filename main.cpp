@@ -25,21 +25,42 @@
 // }
 
 
-#include "timeOfDay.h"
 
+
+
+// using 지시자는 cpp파일에서는 영역 { block } 안에서 사용, 헤더파일엔 using 지시자는 사용하지 않고 네임스페이스 지정자를 사용합니다.
+
+// -using 지시자 예: { using namespace std; cout << "Enter your id: "; }
+
+// -네임스페이스 지정자 예: std::cout << "Enter your id: ";
+
+#include "alarm.h"
+#include <array>
+namespace leedayeon2566038
+{
+    void printAlarmArray(const alarm a[], const int n){
+        for(int i=0;i<n;++i)
+        std::cout<<a[i];
+    }
+}
 int main(){
     using namespace leedayeon2566038;
-    timeOfDay t1,t2;
-    std::cin >>t1>>t2;
-    std::cout<<t1<<" "<<t2<<'\n';
-    std::cout<<++t2<<'\n';
-    std::cout<<t2++<<'\n';
-    std::cout<<t2<<'\n';
-    if(t1==t2) std::cout<<"same\n";
-    else std::cout<<"different\n";
+    const int n{4};
+    alarm a[n];//a가 알람이라는 배열
+    a[0]=alarm{"morning", {6,0},1};
 
-    std::cout<<t1+t2<<std::endl;
-    return 0;
+    a[1].setName("class");
+    a[1].setWakeTime({9,0});
+    a[1].setActive(1);
 
-    
+    a[2].input();
+    std::cin>> a[3];
+    printAlarmArray(a,n);
+
+    std::array<alarm,n>b;
+    for(int i=0;i<b.size();++i)
+        b.at(i)=a[i];
+    for(const auto&bi:b)
+    bi.print();
+
 }
