@@ -26,7 +26,7 @@ namespace leedayeon2566038{
             testHour();
             testMinute();
         }
-        timeOfDay operator++(){
+        timeOfDay& operator++(){
             ++minute; //0~59 만약 59이면??
             if(minute==60) {
                 ++hour; minute=0;
@@ -34,19 +34,20 @@ namespace leedayeon2566038{
             if(hour==24){
                     hour=0;
                 }
-            return timeOfDay{hour, minute};
+            return *this;
         }
 
-        timeOfDay operator++(int){
-            timeOfDay temp{hour,minute};
-            ++minute; //0~59 만약 59이면??
-            if(minute==60) {
-                ++hour; minute=0;
-            }
-            if(hour==24){
-                    hour=0;
-                }
+        timeOfDay& operator++(int){
+            timeOfDay temp{*this};
+            ++(*this);
             return temp;
+        }
+
+        timeOfDay& operator+=(int m){ //&를 왜 붙이는 것이지???
+            minute+=m;//minute에만 +되는거니까!!
+            if(minute>=60){minute%=60; hour+=minute/60;}
+            if(hour>=24){hour%=24;}
+            return *this;
         }
 
 
@@ -79,7 +80,7 @@ namespace leedayeon2566038{
             int totalMinute{minute1+minute2};
             int newMinute{totalMinute%60};
             int newHour{totalMinute/60};
-            if(newHour>24) newHour%=24;
+            if(newHour>=24) newHour%=24;
             return {newHour,newMinute};
         }
 

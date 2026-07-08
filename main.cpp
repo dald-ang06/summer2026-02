@@ -42,9 +42,32 @@ namespace leedayeon2566038
         for(int i=0;i<n;++i)
         std::cout<<a[i];
     }
+    void parVal(timeOfDay v){v+=1;}
+    void parRef(timeOfDay& r){r+=1;}
+    void parPtr(timeOfDay* p){*p+=1;}
+
+    timeOfDay retVal(timeOfDay v){v+=1; return v;}
+    timeOfDay& retRef(timeOfDay& r){r+=1; return r;}
+    timeOfDay* retPtr(timeOfDay* p){*p+=1; return p;}
 }
 int main(){
+    
+
+
     using namespace leedayeon2566038;
+    timeOfDay val{11,30}; std::cout<< val<<" ";
+    parVal(val); std::cout<<val<<std::endl;
+    timeOfDay& ref{val}; std::cout<< ref<<" ";
+    parRef(ref); std::cout<<ref<<std::endl;
+    timeOfDay* ptr{&val}; std::cout<<*ptr<<" ";
+    parPtr(ptr); std::cout<< *ptr<< "\n";
+    
+    val=timeOfDay{15,30}; 
+    std::cout<< val<< " "<<retVal(val)<<"\n";
+    std::cout<<ref<<" "<<retRef(ref)<<"\n";
+    std::cout<<*ptr<<" "<<*retPtr(ptr)<<"\n";
+
+
     const int n{4};
     alarm a[n];//a가 알람이라는 배열
     a[0]=alarm{"morning", {6,0},1};
@@ -62,5 +85,6 @@ int main(){
         b.at(i)=a[i];
     for(const auto&bi:b)
     bi.print();
+
 
 }
