@@ -66,7 +66,11 @@ int main(){
     std::cout<< val<< " "<<retVal(val)<<"\n";
     std::cout<<ref<<" "<<retRef(ref)<<"\n";
     std::cout<<*ptr<<" "<<*retPtr(ptr)<<"\n";
-
+    timeOfDay* tPtr{new timeOfDay };
+    tPtr->setHour(18);
+    tPtr->setMinute(30);
+    std::cout<<*tPtr<<std::endl;
+    delete tPtr;
 
     const int n{4};
     alarm a[n];//a가 알람이라는 배열

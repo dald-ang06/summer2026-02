@@ -45,7 +45,7 @@ namespace leedayeon2566038{
 
         timeOfDay& operator+=(int m){ //&를 왜 붙이는 것이지???
             minute+=m;//minute에만 +되는거니까!!
-            if(minute>=60){minute%=60; hour+=minute/60;}
+            if(minute>=60){hour+=minute/60;minute%=60;}
             if(hour>=24){hour%=24;}
             return *this;
         }
