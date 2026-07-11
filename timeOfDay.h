@@ -69,6 +69,7 @@ namespace leedayeon2566038{
             os<<t.minute;
             return os;
         }
+        
 
         friend bool operator ==(const timeOfDay&t1, const timeOfDay& t2){
             return t1.hour==t2.hour&& t1.minute==t2.minute;
